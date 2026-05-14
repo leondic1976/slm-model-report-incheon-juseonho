@@ -137,65 +137,65 @@ export default function EngineeringCalculator() {
 
   return (
     <div className="space-y-6">
-      <div className="bg-gray-900 rounded-xl p-4">
-        <h3 className="text-sm font-semibold text-gray-400 mb-3">단위 변환기</h3>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-2 mb-4">
+      <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6">
+        <h3 className="text-lg font-bold text-gray-700 mb-4">단위 변환기</h3>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-2 mb-5">
           {(Object.keys(units) as UnitCategory[]).map(c => (
             <button key={c} onClick={() => { setCategory(c); setFromIdx(0); setToIdx(1); setResult(null) }}
-              className={`px-3 py-2 rounded-lg text-xs font-medium ${category === c ? 'bg-cyan-600 text-white' : 'bg-gray-800 text-gray-400 hover:bg-gray-700'}`}>
+              className={`px-4 py-2.5 rounded-xl text-base font-bold ${category === c ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white' : 'bg-white text-gray-600 border border-gray-300 hover:bg-gray-50'}`}>
               {unitNames[c]}
             </button>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-3 items-end">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
           <div>
-            <label className="text-xs text-gray-500 mb-1 block">값</label>
-            <input value={val} onChange={e => setVal(e.target.value)} className="w-full bg-gray-800 text-white px-3 py-2 rounded-lg text-sm font-mono focus:outline-none focus:ring-1 focus:ring-cyan-500" />
+            <label className="text-sm font-semibold text-gray-600 mb-1.5 block">값</label>
+            <input value={val} onChange={e => setVal(e.target.value)} className="w-full bg-white border border-gray-300 text-gray-800 px-4 py-3 rounded-xl text-lg font-mono focus:outline-none focus:ring-2 focus:ring-cyan-400" />
           </div>
           <div>
-            <label className="text-xs text-gray-500 mb-1 block">변환할 단위</label>
-            <select value={fromIdx} onChange={e => setFromIdx(Number(e.target.value))} className="w-full bg-gray-800 text-white px-3 py-2 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-cyan-500">
+            <label className="text-sm font-semibold text-gray-600 mb-1.5 block">변환할 단위</label>
+            <select value={fromIdx} onChange={e => setFromIdx(Number(e.target.value))} className="w-full bg-white border border-gray-300 text-gray-800 px-4 py-3 rounded-xl text-base focus:outline-none focus:ring-2 focus:ring-cyan-400">
               {units[category].map((u, i) => <option key={i} value={i}>{u.label}</option>)}
             </select>
           </div>
           <div>
-            <label className="text-xs text-gray-500 mb-1 block">변환될 단위</label>
-            <select value={toIdx} onChange={e => setToIdx(Number(e.target.value))} className="w-full bg-gray-800 text-white px-3 py-2 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-cyan-500">
+            <label className="text-sm font-semibold text-gray-600 mb-1.5 block">변환될 단위</label>
+            <select value={toIdx} onChange={e => setToIdx(Number(e.target.value))} className="w-full bg-white border border-gray-300 text-gray-800 px-4 py-3 rounded-xl text-base focus:outline-none focus:ring-2 focus:ring-cyan-400">
               {units[category].map((u, i) => <option key={i} value={i}>{u.label}</option>)}
             </select>
           </div>
-          <button onClick={convert} className="px-4 py-2 bg-cyan-600 text-white rounded-lg text-sm hover:bg-cyan-700 h-fit">변환</button>
+          <button onClick={convert} className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-xl text-base font-bold hover:opacity-90 h-fit">변환</button>
         </div>
 
         {result && (
-          <div className="mt-3 bg-gray-800 p-3 rounded-lg">
-            <p className="text-sm font-mono text-cyan-300">{result}</p>
+          <div className="mt-4 bg-white border border-gray-200 p-4 rounded-xl">
+            <p className="text-lg font-mono text-cyan-700">{result}</p>
           </div>
         )}
       </div>
 
-      <div className="bg-gray-900 rounded-xl p-4">
-        <h3 className="text-sm font-semibold text-gray-400 mb-3">공학 공식</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 items-end">
+      <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6">
+        <h3 className="text-lg font-bold text-gray-700 mb-4">공학 공식</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
           <div>
-            <label className="text-xs text-gray-500 mb-1 block">공식 선택</label>
-            <select value={formulaIdx} onChange={e => { setFormulaIdx(Number(e.target.value)); setFormulaVals(['', '']); setFormulaResult(null) }} className="w-full bg-gray-800 text-white px-3 py-2 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-cyan-500">
+            <label className="text-sm font-semibold text-gray-600 mb-1.5 block">공식 선택</label>
+            <select value={formulaIdx} onChange={e => { setFormulaIdx(Number(e.target.value)); setFormulaVals(['', '']); setFormulaResult(null) }} className="w-full bg-white border border-gray-300 text-gray-800 px-4 py-3 rounded-xl text-base focus:outline-none focus:ring-2 focus:ring-cyan-400">
               {formulas.map((f, i) => <option key={i} value={i}>{f.name}</option>)}
             </select>
           </div>
           {formulas[formulaIdx].fields.map((field, i) => (
             <div key={i}>
-              <label className="text-xs text-gray-500 mb-1 block">{field}</label>
-              <input value={formulaVals[i] || ''} onChange={e => { const v = [...formulaVals]; v[i] = e.target.value; setFormulaVals(v) }} placeholder={`${field} 입력`} className="w-full bg-gray-800 text-white px-3 py-2 rounded-lg text-sm font-mono focus:outline-none focus:ring-1 focus:ring-cyan-500" />
+              <label className="text-sm font-semibold text-gray-600 mb-1.5 block">{field}</label>
+              <input value={formulaVals[i] || ''} onChange={e => { const v = [...formulaVals]; v[i] = e.target.value; setFormulaVals(v) }} placeholder={`${field} 입력`} className="w-full bg-white border border-gray-300 text-gray-800 px-4 py-3 rounded-xl text-lg font-mono focus:outline-none focus:ring-2 focus:ring-cyan-400" />
             </div>
           ))}
-          <button onClick={calcFormula} className="px-4 py-2 bg-cyan-600 text-white rounded-lg text-sm hover:bg-cyan-700 h-fit">계산</button>
+          <button onClick={calcFormula} className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-xl text-base font-bold hover:opacity-90 h-fit">계산</button>
         </div>
 
         {formulaResult && (
-          <div className="mt-3 bg-gray-800 p-3 rounded-lg">
-            <p className="text-sm font-mono text-cyan-300">{formulas[formulaIdx].name} = {formulaResult}</p>
+          <div className="mt-4 bg-white border border-gray-200 p-4 rounded-xl">
+            <p className="text-lg font-mono text-cyan-700">{formulas[formulaIdx].name} = {formulaResult}</p>
           </div>
         )}
       </div>

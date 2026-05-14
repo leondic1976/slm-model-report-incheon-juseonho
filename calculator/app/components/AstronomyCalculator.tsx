@@ -84,11 +84,11 @@ export default function AstronomyCalculator() {
   ] as const
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div className="flex gap-2 flex-wrap">
         {tabs.map(t => (
           <button key={t.key} onClick={() => setActiveTab(t.key)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium ${activeTab === t.key ? 'bg-purple-600 text-white' : 'bg-gray-800 text-gray-400 hover:bg-gray-700'}`}>
+            className={`px-5 py-2.5 rounded-xl text-base font-bold ${activeTab === t.key ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white' : 'bg-white text-gray-600 border border-gray-300 hover:bg-gray-50'}`}>
             {t.label}
           </button>
         ))}
@@ -96,56 +96,56 @@ export default function AstronomyCalculator() {
 
       {activeTab === 'planets' && (
         <>
-          <div className="bg-gray-900 rounded-xl p-4 overflow-x-auto">
-            <h3 className="text-sm font-semibold text-gray-400 mb-3">태양계 행성</h3>
-            <table className="w-full text-xs text-gray-300 font-mono">
+          <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 overflow-x-auto">
+            <h3 className="text-lg font-bold text-gray-700 mb-4">태양계 행성</h3>
+            <table className="w-full text-base text-gray-600 font-mono">
               <thead>
-                <tr className="text-gray-500 border-b border-gray-700">
-                  <th className="text-left py-1 pr-3">이름</th>
-                  <th className="text-right px-2 py-1">질량 (kg)</th>
-                  <th className="text-right px-2 py-1">반지름 (km)</th>
-                  <th className="text-right px-2 py-1">중력 (m/s²)</th>
-                  <th className="text-right px-2 py-1">공전 주기 (일)</th>
-                  <th className="text-right px-2 py-1">온도 (°C)</th>
+                <tr className="text-gray-500 border-b border-gray-300">
+                  <th className="text-left py-2 pr-4">이름</th>
+                  <th className="text-right px-3 py-2">질량 (kg)</th>
+                  <th className="text-right px-3 py-2">반지름 (km)</th>
+                  <th className="text-right px-3 py-2">중력 (m/s²)</th>
+                  <th className="text-right px-3 py-2">공전 주기 (일)</th>
+                  <th className="text-right px-3 py-2">온도 (°C)</th>
                 </tr>
               </thead>
               <tbody>
                 {planets.map(p => (
-                  <tr key={p.name} className="border-b border-gray-800 hover:bg-gray-800/50">
-                    <td className="py-1.5 pr-3 font-semibold text-purple-300">{p.nameKr} ({p.name})</td>
-                    <td className="text-right px-2 py-1.5">{formatNum(p.mass)}</td>
-                    <td className="text-right px-2 py-1.5">{(p.radius / 1000).toLocaleString()}</td>
-                    <td className="text-right px-2 py-1.5">{p.gravity}</td>
-                    <td className="text-right px-2 py-1.5">{p.period.toLocaleString()}</td>
-                    <td className="text-right px-2 py-1.5">{p.temp > 0 ? '+' : ''}{p.temp}</td>
+                  <tr key={p.name} className="border-b border-gray-200 hover:bg-white">
+                    <td className="py-2.5 pr-4 font-bold text-purple-700">{p.nameKr} ({p.name})</td>
+                    <td className="text-right px-3 py-2.5">{formatNum(p.mass)}</td>
+                    <td className="text-right px-3 py-2.5">{(p.radius / 1000).toLocaleString()}</td>
+                    <td className="text-right px-3 py-2.5">{p.gravity}</td>
+                    <td className="text-right px-3 py-2.5">{p.period.toLocaleString()}</td>
+                    <td className="text-right px-3 py-2.5">{p.temp > 0 ? '+' : ''}{p.temp}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
 
-          <div className="bg-gray-900 rounded-xl p-4 overflow-x-auto">
-            <h3 className="text-sm font-semibold text-gray-400 mb-3">주요 위성</h3>
-            <table className="w-full text-xs text-gray-300 font-mono">
+          <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 overflow-x-auto">
+            <h3 className="text-lg font-bold text-gray-700 mb-4">주요 위성</h3>
+            <table className="w-full text-base text-gray-600 font-mono">
               <thead>
-                <tr className="text-gray-500 border-b border-gray-700">
-                  <th className="text-left py-1 pr-3">이름</th>
-                  <th className="text-left px-2 py-1">모행성</th>
-                  <th className="text-right px-2 py-1">질량 (kg)</th>
-                  <th className="text-right px-2 py-1">반지름 (km)</th>
-                  <th className="text-right px-2 py-1">중력 (m/s²)</th>
-                  <th className="text-right px-2 py-1">공전 주기 (일)</th>
+                <tr className="text-gray-500 border-b border-gray-300">
+                  <th className="text-left py-2 pr-4">이름</th>
+                  <th className="text-left px-3 py-2">모행성</th>
+                  <th className="text-right px-3 py-2">질량 (kg)</th>
+                  <th className="text-right px-3 py-2">반지름 (km)</th>
+                  <th className="text-right px-3 py-2">중력 (m/s²)</th>
+                  <th className="text-right px-3 py-2">공전 주기 (일)</th>
                 </tr>
               </thead>
               <tbody>
                 {moons.map(m => (
-                  <tr key={m.name} className="border-b border-gray-800 hover:bg-gray-800/50">
-                    <td className="py-1.5 pr-3 font-semibold text-indigo-300">{m.nameKr} ({m.name})</td>
-                    <td className="px-2 py-1.5 text-gray-500">{m.planet}</td>
-                    <td className="text-right px-2 py-1.5">{formatNum(m.mass)}</td>
-                    <td className="text-right px-2 py-1.5">{(m.radius / 1000).toLocaleString()}</td>
-                    <td className="text-right px-2 py-1.5">{m.gravity}</td>
-                    <td className="text-right px-2 py-1.5">{m.period}</td>
+                  <tr key={m.name} className="border-b border-gray-200 hover:bg-white">
+                    <td className="py-2.5 pr-4 font-bold text-indigo-700">{m.nameKr} ({m.name})</td>
+                    <td className="px-3 py-2.5 text-gray-500">{m.planet}</td>
+                    <td className="text-right px-3 py-2.5">{formatNum(m.mass)}</td>
+                    <td className="text-right px-3 py-2.5">{(m.radius / 1000).toLocaleString()}</td>
+                    <td className="text-right px-3 py-2.5">{m.gravity}</td>
+                    <td className="text-right px-3 py-2.5">{m.period}</td>
                   </tr>
                 ))}
               </tbody>
@@ -155,90 +155,90 @@ export default function AstronomyCalculator() {
       )}
 
       {activeTab === 'gravity' && (
-        <div className="bg-gray-900 rounded-xl p-4">
-          <h3 className="text-sm font-semibold text-gray-400 mb-3">표면 중력 계산기</h3>
-          <p className="text-xs text-gray-500 mb-3">g = G × M / r²</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3">
+        <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6">
+          <h3 className="text-lg font-bold text-gray-700 mb-3">표면 중력 계산기</h3>
+          <p className="text-sm text-gray-500 mb-4">g = G × M / r²</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
             <div>
-              <label className="text-xs text-gray-500 mb-1 block">질량 (kg)</label>
-              <input value={gMass} onChange={e => setGMass(e.target.value)} className="w-full bg-gray-800 text-white px-3 py-2 rounded-lg text-sm font-mono focus:outline-none focus:ring-1 focus:ring-purple-500" />
+              <label className="text-sm font-semibold text-gray-600 mb-1.5 block">질량 (kg)</label>
+              <input value={gMass} onChange={e => setGMass(e.target.value)} className="w-full bg-white border border-gray-300 text-gray-800 px-4 py-3 rounded-xl text-lg font-mono focus:outline-none focus:ring-2 focus:ring-purple-400" />
             </div>
             <div>
-              <label className="text-xs text-gray-500 mb-1 block">반지름 (m)</label>
-              <input value={gRadius} onChange={e => setGRadius(e.target.value)} className="w-full bg-gray-800 text-white px-3 py-2 rounded-lg text-sm font-mono focus:outline-none focus:ring-1 focus:ring-purple-500" />
+              <label className="text-sm font-semibold text-gray-600 mb-1.5 block">반지름 (m)</label>
+              <input value={gRadius} onChange={e => setGRadius(e.target.value)} className="w-full bg-white border border-gray-300 text-gray-800 px-4 py-3 rounded-xl text-lg font-mono focus:outline-none focus:ring-2 focus:ring-purple-400" />
             </div>
-            <button onClick={calcGravity} className="px-4 py-2 bg-purple-600 text-white rounded-lg text-sm hover:bg-purple-700 h-fit mt-5">계산</button>
+            <button onClick={calcGravity} className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-xl text-base font-bold hover:opacity-90 h-fit mt-7">계산</button>
           </div>
           <div className="flex gap-2 flex-wrap">
             {planets.map(p => (
               <button key={p.name} onClick={() => { setGMass(String(p.mass)); setGRadius(String(p.radius)); setGResult(null) }}
-                className="px-2 py-1 bg-gray-800 text-xs text-gray-400 rounded hover:bg-gray-700">{p.nameKr}</button>
+                className="px-3 py-1.5 bg-white border border-gray-300 text-sm text-gray-600 rounded-lg hover:bg-gray-50">{p.nameKr}</button>
             ))}
           </div>
           {gResult && (
-            <div className="mt-3 bg-gray-800 p-3 rounded-lg">
-              <p className="text-sm font-mono text-purple-300 whitespace-pre-line">{gResult}</p>
+            <div className="mt-4 bg-white border border-gray-200 p-4 rounded-xl">
+              <p className="text-lg font-mono text-purple-700 whitespace-pre-line">{gResult}</p>
             </div>
           )}
         </div>
       )}
 
       {activeTab === 'orbital' && (
-        <div className="bg-gray-900 rounded-xl p-4">
-          <h3 className="text-sm font-semibold text-gray-400 mb-3">궤도 주기 계산 (케플러 제3법칙)</h3>
-          <p className="text-xs text-gray-500 mb-3">T = 2π × √(r³ / GM)</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3">
+        <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6">
+          <h3 className="text-lg font-bold text-gray-700 mb-3">궤도 주기 계산 (케플러 제3법칙)</h3>
+          <p className="text-sm text-gray-500 mb-4">T = 2π × √(r³ / GM)</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
             <div>
-              <label className="text-xs text-gray-500 mb-1 block">중심 천체 질량 (kg)</label>
-              <input value={orbitalMass} onChange={e => setOrbitalMass(e.target.value)} className="w-full bg-gray-800 text-white px-3 py-2 rounded-lg text-sm font-mono focus:outline-none focus:ring-1 focus:ring-purple-500" />
+              <label className="text-sm font-semibold text-gray-600 mb-1.5 block">중심 천체 질량 (kg)</label>
+              <input value={orbitalMass} onChange={e => setOrbitalMass(e.target.value)} className="w-full bg-white border border-gray-300 text-gray-800 px-4 py-3 rounded-xl text-lg font-mono focus:outline-none focus:ring-2 focus:ring-purple-400" />
             </div>
             <div>
-              <label className="text-xs text-gray-500 mb-1 block">궤도 반지름 (m)</label>
-              <input value={orbitalRadius} onChange={e => setOrbitalRadius(e.target.value)} className="w-full bg-gray-800 text-white px-3 py-2 rounded-lg text-sm font-mono focus:outline-none focus:ring-1 focus:ring-purple-500" />
+              <label className="text-sm font-semibold text-gray-600 mb-1.5 block">궤도 반지름 (m)</label>
+              <input value={orbitalRadius} onChange={e => setOrbitalRadius(e.target.value)} className="w-full bg-white border border-gray-300 text-gray-800 px-4 py-3 rounded-xl text-lg font-mono focus:outline-none focus:ring-2 focus:ring-purple-400" />
             </div>
-            <button onClick={calcOrbital} className="px-4 py-2 bg-purple-600 text-white rounded-lg text-sm hover:bg-purple-700 h-fit mt-5">계산</button>
+            <button onClick={calcOrbital} className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-xl text-base font-bold hover:opacity-90 h-fit mt-7">계산</button>
           </div>
           <div className="flex gap-2 flex-wrap">
-            <button onClick={() => { setOrbitalMass(String(SOLAR_MASS)); setOrbitalRadius(String(AU)); setOrbitalResult(null) }} className="px-2 py-1 bg-gray-800 text-xs text-gray-400 rounded hover:bg-gray-700">지구 → 태양</button>
-            <button onClick={() => { setOrbitalMass(String(5.972e24)); setOrbitalRadius(String(3.844e8)); setOrbitalResult(null) }} className="px-2 py-1 bg-gray-800 text-xs text-gray-400 rounded hover:bg-gray-700">달 → 지구</button>
-            <button onClick={() => { setOrbitalMass(String(SOLAR_MASS)); setOrbitalRadius(String(57.9e9)); setOrbitalResult(null) }} className="px-2 py-1 bg-gray-800 text-xs text-gray-400 rounded hover:bg-gray-700">수성 → 태양</button>
-            <button onClick={() => { setOrbitalMass(String(1.898e27)); setOrbitalRadius(String(4.217e8)); setOrbitalResult(null) }} className="px-2 py-1 bg-gray-800 text-xs text-gray-400 rounded hover:bg-gray-700">이오 → 목성</button>
-            <button onClick={() => { setOrbitalMass(String(SOLAR_MASS)); setOrbitalRadius(String(778.5e9)); setOrbitalResult(null) }} className="px-2 py-1 bg-gray-800 text-xs text-gray-400 rounded hover:bg-gray-700">목성 → 태양</button>
+            <button onClick={() => { setOrbitalMass(String(SOLAR_MASS)); setOrbitalRadius(String(AU)); setOrbitalResult(null) }} className="px-3 py-1.5 bg-white border border-gray-300 text-sm text-gray-600 rounded-lg hover:bg-gray-50">지구 → 태양</button>
+            <button onClick={() => { setOrbitalMass(String(5.972e24)); setOrbitalRadius(String(3.844e8)); setOrbitalResult(null) }} className="px-3 py-1.5 bg-white border border-gray-300 text-sm text-gray-600 rounded-lg hover:bg-gray-50">달 → 지구</button>
+            <button onClick={() => { setOrbitalMass(String(SOLAR_MASS)); setOrbitalRadius(String(57.9e9)); setOrbitalResult(null) }} className="px-3 py-1.5 bg-white border border-gray-300 text-sm text-gray-600 rounded-lg hover:bg-gray-50">수성 → 태양</button>
+            <button onClick={() => { setOrbitalMass(String(1.898e27)); setOrbitalRadius(String(4.217e8)); setOrbitalResult(null) }} className="px-3 py-1.5 bg-white border border-gray-300 text-sm text-gray-600 rounded-lg hover:bg-gray-50">이오 → 목성</button>
+            <button onClick={() => { setOrbitalMass(String(SOLAR_MASS)); setOrbitalRadius(String(778.5e9)); setOrbitalResult(null) }} className="px-3 py-1.5 bg-white border border-gray-300 text-sm text-gray-600 rounded-lg hover:bg-gray-50">목성 → 태양</button>
           </div>
           {orbitalResult && (
-            <div className="mt-3 bg-gray-800 p-3 rounded-lg">
-              <p className="text-sm font-mono text-purple-300 whitespace-pre-line">{orbitalResult}</p>
+            <div className="mt-4 bg-white border border-gray-200 p-4 rounded-xl">
+              <p className="text-lg font-mono text-purple-700 whitespace-pre-line">{orbitalResult}</p>
             </div>
           )}
         </div>
       )}
 
       {activeTab === 'light' && (
-        <div className="bg-gray-900 rounded-xl p-4">
-          <h3 className="text-sm font-semibold text-gray-400 mb-3">광년 거리 변환기</h3>
-          <p className="text-xs text-gray-500 mb-3">1 ly = 9.461×10¹⁵ m = 63,241 AU = 0.3066 pc</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3">
+        <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6">
+          <h3 className="text-lg font-bold text-gray-700 mb-3">광년 거리 변환기</h3>
+          <p className="text-sm text-gray-500 mb-4">1 ly = 9.461×10¹⁵ m = 63,241 AU = 0.3066 pc</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
             <div>
-              <label className="text-xs text-gray-500 mb-1 block">광년 (ly)</label>
-              <input value={lyValue} onChange={e => setLyValue(e.target.value)} className="w-full bg-gray-800 text-white px-3 py-2 rounded-lg text-sm font-mono focus:outline-none focus:ring-1 focus:ring-purple-500" />
+              <label className="text-sm font-semibold text-gray-600 mb-1.5 block">광년 (ly)</label>
+              <input value={lyValue} onChange={e => setLyValue(e.target.value)} className="w-full bg-white border border-gray-300 text-gray-800 px-4 py-3 rounded-xl text-lg font-mono focus:outline-none focus:ring-2 focus:ring-purple-400" />
             </div>
-            <button onClick={calcLight} className="px-4 py-2 bg-purple-600 text-white rounded-lg text-sm hover:bg-purple-700 h-fit mt-5">변환</button>
+            <button onClick={calcLight} className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-xl text-base font-bold hover:opacity-90 h-fit mt-7">변환</button>
           </div>
           <div className="flex gap-2 flex-wrap">
-            <button onClick={() => setLyValue('4.246')} className="px-2 py-1 bg-gray-800 text-xs text-gray-400 rounded hover:bg-gray-700">프록시마 켄타우리</button>
-            <button onClick={() => setLyValue('8.6')} className="px-2 py-1 bg-gray-800 text-xs text-gray-400 rounded hover:bg-gray-700">시리우스</button>
-            <button onClick={() => setLyValue('640')} className="px-2 py-1 bg-gray-800 text-xs text-gray-400 rounded hover:bg-gray-700">베텔게우스</button>
-            <button onClick={() => setLyValue('25300')} className="px-2 py-1 bg-gray-800 text-xs text-gray-400 rounded hover:bg-gray-700">은하 중심</button>
-            <button onClick={() => setLyValue('2.5e6')} className="px-2 py-1 bg-gray-800 text-xs text-gray-400 rounded hover:bg-gray-700">안드로메다 은하</button>
+            <button onClick={() => setLyValue('4.246')} className="px-3 py-1.5 bg-white border border-gray-300 text-sm text-gray-600 rounded-lg hover:bg-gray-50">프록시마 켄타우리</button>
+            <button onClick={() => setLyValue('8.6')} className="px-3 py-1.5 bg-white border border-gray-300 text-sm text-gray-600 rounded-lg hover:bg-gray-50">시리우스</button>
+            <button onClick={() => setLyValue('640')} className="px-3 py-1.5 bg-white border border-gray-300 text-sm text-gray-600 rounded-lg hover:bg-gray-50">베텔게우스</button>
+            <button onClick={() => setLyValue('25300')} className="px-3 py-1.5 bg-white border border-gray-300 text-sm text-gray-600 rounded-lg hover:bg-gray-50">은하 중심</button>
+            <button onClick={() => setLyValue('2.5e6')} className="px-3 py-1.5 bg-white border border-gray-300 text-sm text-gray-600 rounded-lg hover:bg-gray-50">안드로메다 은하</button>
           </div>
           {lightResult && (
-            <div className="mt-3 bg-gray-800 p-3 rounded-lg">
-              <p className="text-sm font-mono text-purple-300">{lightResult}</p>
+            <div className="mt-4 bg-white border border-gray-200 p-4 rounded-xl">
+              <p className="text-lg font-mono text-purple-700">{lightResult}</p>
             </div>
           )}
-          <div className="mt-4 bg-gray-800/50 p-3 rounded-lg">
-            <h4 className="text-xs font-semibold text-gray-400 mb-2">천문 거리 단위</h4>
-            <div className="text-xs text-gray-500 space-y-1">
+          <div className="mt-5 bg-white border border-gray-200 p-5 rounded-xl">
+            <h4 className="text-sm font-bold text-gray-700 mb-3">천문 거리 단위</h4>
+            <div className="text-sm text-gray-500 space-y-1.5">
               <p>1 AU (천문단위) = {AU.toExponential(3)} m (지구-태양 거리)</p>
               <p>1 ly (광년) = {LY.toExponential(3)} m</p>
               <p>1 pc (파섹) = {PC.toExponential(3)} m = 3.2616 ly</p>

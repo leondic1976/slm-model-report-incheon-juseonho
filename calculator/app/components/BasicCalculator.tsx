@@ -57,44 +57,44 @@ export default function BasicCalculator() {
   }
 
   const btn = (label: string, onClick: () => void, cls = '') => (
-    <button key={label} onClick={onClick} className={`p-3 text-lg font-semibold rounded-lg transition-colors ${cls}`}>{label}</button>
+    <button key={label} onClick={onClick} className={`p-4 text-xl font-bold rounded-xl transition-all active:scale-95 ${cls}`}>{label}</button>
   )
 
   return (
-    <div className="flex flex-col md:flex-row gap-6">
+    <div className="flex flex-col md:flex-row gap-8">
       <div className="flex-1">
-        <div className="bg-gray-900 text-white p-4 rounded-xl mb-3 text-right">
-          <div className="text-3xl font-mono truncate">{display}</div>
+        <div className="bg-gray-50 border-2 border-gray-200 text-gray-800 p-6 rounded-2xl mb-4 text-right">
+          <div className="text-5xl font-mono truncate tracking-tight">{display}</div>
         </div>
-        <div className="grid grid-cols-4 gap-2">
-          {btn('C', clear, 'bg-red-500/20 text-red-400 hover:bg-red-500/40 col-span-2')}
-          {btn('⌫', backspace, 'bg-gray-700 hover:bg-gray-600')}
-          {btn('÷', () => setOperation('/'), 'bg-orange-500/20 text-orange-400 hover:bg-orange-500/40')}
-          {btn('7', () => inputDigit('7'), 'bg-gray-800 hover:bg-gray-700')}
-          {btn('8', () => inputDigit('8'), 'bg-gray-800 hover:bg-gray-700')}
-          {btn('9', () => inputDigit('9'), 'bg-gray-800 hover:bg-gray-700')}
-          {btn('×', () => setOperation('*'), 'bg-orange-500/20 text-orange-400 hover:bg-orange-500/40')}
-          {btn('4', () => inputDigit('4'), 'bg-gray-800 hover:bg-gray-700')}
-          {btn('5', () => inputDigit('5'), 'bg-gray-800 hover:bg-gray-700')}
-          {btn('6', () => inputDigit('6'), 'bg-gray-800 hover:bg-gray-700')}
-          {btn('−', () => setOperation('-'), 'bg-orange-500/20 text-orange-400 hover:bg-orange-500/40')}
-          {btn('1', () => inputDigit('1'), 'bg-gray-800 hover:bg-gray-700')}
-          {btn('2', () => inputDigit('2'), 'bg-gray-800 hover:bg-gray-700')}
-          {btn('3', () => inputDigit('3'), 'bg-gray-800 hover:bg-gray-700')}
-          {btn('+', () => setOperation('+'), 'bg-orange-500/20 text-orange-400 hover:bg-orange-500/40')}
-          {btn('±', negate, 'bg-gray-700 hover:bg-gray-600')}
-          {btn('0', () => inputDigit('0'), 'bg-gray-800 hover:bg-gray-700')}
-          {btn('.', inputDot, 'bg-gray-700 hover:bg-gray-600')}
-          {btn('=', equals, 'bg-orange-500 text-white hover:bg-orange-600 row-span-2')}
+        <div className="grid grid-cols-4 gap-3">
+          {btn('C', clear, 'bg-red-100 text-red-600 hover:bg-red-200 col-span-2')}
+          {btn('⌫', backspace, 'bg-gray-100 text-gray-600 hover:bg-gray-200')}
+          {btn('÷', () => setOperation('/'), 'bg-orange-100 text-orange-600 hover:bg-orange-200')}
+          {btn('7', () => inputDigit('7'), 'bg-white text-gray-800 hover:bg-gray-100 border border-gray-200 shadow-sm')}
+          {btn('8', () => inputDigit('8'), 'bg-white text-gray-800 hover:bg-gray-100 border border-gray-200 shadow-sm')}
+          {btn('9', () => inputDigit('9'), 'bg-white text-gray-800 hover:bg-gray-100 border border-gray-200 shadow-sm')}
+          {btn('×', () => setOperation('*'), 'bg-orange-100 text-orange-600 hover:bg-orange-200')}
+          {btn('4', () => inputDigit('4'), 'bg-white text-gray-800 hover:bg-gray-100 border border-gray-200 shadow-sm')}
+          {btn('5', () => inputDigit('5'), 'bg-white text-gray-800 hover:bg-gray-100 border border-gray-200 shadow-sm')}
+          {btn('6', () => inputDigit('6'), 'bg-white text-gray-800 hover:bg-gray-100 border border-gray-200 shadow-sm')}
+          {btn('−', () => setOperation('-'), 'bg-orange-100 text-orange-600 hover:bg-orange-200')}
+          {btn('1', () => inputDigit('1'), 'bg-white text-gray-800 hover:bg-gray-100 border border-gray-200 shadow-sm')}
+          {btn('2', () => inputDigit('2'), 'bg-white text-gray-800 hover:bg-gray-100 border border-gray-200 shadow-sm')}
+          {btn('3', () => inputDigit('3'), 'bg-white text-gray-800 hover:bg-gray-100 border border-gray-200 shadow-sm')}
+          {btn('+', () => setOperation('+'), 'bg-orange-100 text-orange-600 hover:bg-orange-200')}
+          {btn('±', negate, 'bg-gray-100 text-gray-600 hover:bg-gray-200')}
+          {btn('0', () => inputDigit('0'), 'bg-white text-gray-800 hover:bg-gray-100 border border-gray-200 shadow-sm')}
+          {btn('.', inputDot, 'bg-gray-100 text-gray-600 hover:bg-gray-200')}
+          {btn('=', equals, 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white hover:opacity-90 row-span-2 text-3xl')}
         </div>
       </div>
       {history.length > 0 && (
-        <div className="md:w-64 bg-gray-900/50 p-4 rounded-xl max-h-96 overflow-y-auto">
-          <h3 className="text-sm font-semibold text-gray-400 mb-2">계산 기록</h3>
+        <div className="md:w-72 bg-gray-50 p-5 rounded-2xl max-h-96 overflow-y-auto border border-gray-200">
+          <h3 className="text-base font-bold text-gray-700 mb-3">계산 기록</h3>
           {history.slice().reverse().map((h, i) => (
-            <div key={i} className="text-xs text-gray-500 py-1 border-b border-gray-800">{h}</div>
+            <div key={i} className="text-sm text-gray-500 py-1.5 border-b border-gray-200">{h}</div>
           ))}
-          <button onClick={() => setHistory([])} className="text-xs text-red-400 mt-2 hover:text-red-300">지우기</button>
+          <button onClick={() => setHistory([])} className="text-sm text-red-500 mt-3 hover:text-red-600 font-medium">지우기</button>
         </div>
       )}
     </div>

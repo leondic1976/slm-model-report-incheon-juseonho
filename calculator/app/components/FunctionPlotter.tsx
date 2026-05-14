@@ -44,7 +44,6 @@ export default function FunctionPlotter() {
     ctx.fillStyle = '#111'
     ctx.fillRect(0, 0, W, H)
 
-    // Grid
     ctx.strokeStyle = '#222'
     ctx.lineWidth = 0.5
     for (let gx = Math.ceil(x0); gx <= x1; gx++) {
@@ -56,13 +55,11 @@ export default function FunctionPlotter() {
       ctx.beginPath(); ctx.moveTo(0, ys(gy)); ctx.lineTo(W, ys(gy)); ctx.stroke()
     }
 
-    // Axes
     ctx.strokeStyle = '#666'
     ctx.lineWidth = 1.5
     if (x0 <= 0 && x1 >= 0) { ctx.beginPath(); ctx.moveTo(xs(0), 0); ctx.lineTo(xs(0), H); ctx.stroke() }
     if (y0 <= 0 && y1 >= 0) { ctx.beginPath(); ctx.moveTo(0, ys(0)); ctx.lineTo(W, ys(0)); ctx.stroke() }
 
-    // Plot expressions
     const exprs = [expr, expr2, expr3].filter(e => e.trim())
     const steps = W * 2
 
@@ -120,7 +117,7 @@ export default function FunctionPlotter() {
                   else if (i === 1) setExpr2(v)
                   else setExpr3(v)
                 }}
-                placeholder="e.g. x**2 + 2*x + 1"
+                placeholder="예: x**2 + 2*x + 1"
                 className="w-full bg-gray-800 text-white px-3 py-2 rounded-lg text-sm font-mono focus:outline-none focus:ring-2 focus:ring-cyan-500"
               />
             </div>
@@ -128,7 +125,7 @@ export default function FunctionPlotter() {
         </div>
 
         <div className="grid grid-cols-4 gap-2 mb-3">
-          {[['X min', xMin, setXMin], ['X max', xMax, setXMax], ['Y min', yMin, setYMin], ['Y max', yMax, setYMax]].map(([label, val, set]) => (
+          {[['X 최소', xMin, setXMin], ['X 최대', xMax, setXMax], ['Y 최소', yMin, setYMin], ['Y 최대', yMax, setYMax]].map(([label, val, set]) => (
             <div key={label as string}>
               <label className="text-xs text-gray-500">{label as string}</label>
               <input value={val as string} onChange={e => (set as Function)(e.target.value)} className="w-full bg-gray-800 text-white px-2 py-1 rounded text-sm font-mono focus:outline-none focus:ring-1 focus:ring-cyan-500" />
@@ -137,9 +134,9 @@ export default function FunctionPlotter() {
         </div>
 
         <div className="flex gap-2">
-          <button onClick={draw} className="px-4 py-2 bg-cyan-600 text-white rounded-lg text-sm hover:bg-cyan-700">Draw</button>
-          <button onClick={generateTable} className="px-4 py-2 bg-gray-700 text-white rounded-lg text-sm hover:bg-gray-600">Generate Table</button>
-          <button onClick={() => { setExpr('sin(x)'); setExpr2(''); setExpr3(''); setXMin('-10'); setXMax('10'); setYMin('-5'); setYMax('5'); setTable([]) }} className="px-4 py-2 bg-red-500/20 text-red-400 rounded-lg text-sm hover:bg-red-500/40">Reset</button>
+          <button onClick={draw} className="px-4 py-2 bg-cyan-600 text-white rounded-lg text-sm hover:bg-cyan-700">그리기</button>
+          <button onClick={generateTable} className="px-4 py-2 bg-gray-700 text-white rounded-lg text-sm hover:bg-gray-600">값 표 생성</button>
+          <button onClick={() => { setExpr('sin(x)'); setExpr2(''); setExpr3(''); setXMin('-10'); setXMax('10'); setYMin('-5'); setYMax('5'); setTable([]) }} className="px-4 py-2 bg-red-500/20 text-red-400 rounded-lg text-sm hover:bg-red-500/40">초기화</button>
         </div>
       </div>
 
@@ -160,7 +157,7 @@ export default function FunctionPlotter() {
 
       {table.length > 0 && (
         <div className="bg-gray-900 rounded-xl p-4 overflow-x-auto">
-          <h3 className="text-sm font-semibold text-gray-400 mb-2">Value Table</h3>
+          <h3 className="text-sm font-semibold text-gray-400 mb-2">값 표</h3>
           <table className="w-full text-xs text-gray-300 font-mono">
             <thead>
               <tr className="text-gray-500 border-b border-gray-700">

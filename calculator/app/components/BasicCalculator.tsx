@@ -90,11 +90,11 @@ export default function BasicCalculator() {
       </div>
       {history.length > 0 && (
         <div className="md:w-64 bg-gray-900/50 p-4 rounded-xl max-h-96 overflow-y-auto">
-          <h3 className="text-sm font-semibold text-gray-400 mb-2">History</h3>
+          <h3 className="text-sm font-semibold text-gray-400 mb-2">계산 기록</h3>
           {history.slice().reverse().map((h, i) => (
             <div key={i} className="text-xs text-gray-500 py-1 border-b border-gray-800">{h}</div>
           ))}
-          <button onClick={() => setHistory([])} className="text-xs text-red-400 mt-2 hover:text-red-300">Clear</button>
+          <button onClick={() => setHistory([])} className="text-xs text-red-400 mt-2 hover:text-red-300">지우기</button>
         </div>
       )}
     </div>
